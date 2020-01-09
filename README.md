@@ -159,3 +159,5 @@ $ (tap-dayforce) make flake8
 ```
 
 Once you've confirmed that your changes work and the testing suite passes, feel free to put out a PR!
+
+Copyright &copy; 2019 Stitch
