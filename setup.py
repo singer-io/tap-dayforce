@@ -1,25 +1,13 @@
 from setuptools import find_packages, setup
 
-
-def get_version():
-    version = {}
-    with open('tap_dayforce/version.py') as fp:
-        exec(fp.read(), version)
-    return version['__version__']
-
-
-with open('README.md', 'r') as f:
-    readme = f.read()
-
-
 setup(
     name='tap_dayforce',
     author='David Wallace',
     author_email='david.wallace@goodeggs.com',
-    version=get_version(),
-    url='https://github.com/goodeggs/tap-dayforce',
+    version='0.2.0',
+    url='https://github.com/singer-io/tap-dayforce',
     description='Singer.io tap for extracting data from Dayforce REST API v1',
-    long_description=readme,
+    long_description='',
     long_description_content_type='text/markdown',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
