@@ -56,12 +56,12 @@ def sync(args):
     LOGGER.info('Starting sync..')
 
     selected_streams = {catalog_entry.stream for catalog_entry in args.catalog.get_selected_streams(args.state)}
-    LOGGER.info(f"Selected Streams: {selected_streams}")
+    LOGGER.info("Selected Streams: %s", selected_streams)
 
     for available_stream in AVAILABLE_STREAMS:
         stream = available_stream.from_args(args)
         if stream.tap_stream_id in selected_streams:
-            LOGGER.info(f"Starting sync for Stream {stream.tap_stream_id}..")
+            LOGGER.info("Starting sync for Stream %s..", stream.tap_stream_id)
             singer.bookmarks.set_currently_syncing(state=stream.state, tap_stream_id=stream.tap_stream_id)
             singer.write_state(stream.state)
             singer.write_schema(stream_name=stream.tap_stream_id,
