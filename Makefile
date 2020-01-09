@@ -11,3 +11,5 @@ dev_install:
 
 sanity_check:
 	pip3 list
+test:
+	pylint tap_dayforce --disable line-too-long,missing-module-docstring,invalid-name,missing-function-docstring,unused-argument,bare-except,useless-object-inheritance,no-member,missing-class-docstring,redefined-builtin,no-self-use

@@ -33,6 +33,14 @@ setup(
         'backoff==1.8.0',
         'rollbar==0.14.7'
     ],
+    extras_require={
+        'dev': [
+            'pylint',
+            'ipdb',
+            'nose',
+            'pytest'
+        ]
+    },
     python_requires='>=3.6',
     entry_points={
         'console_scripts': ['tap-dayforce = tap_dayforce:main']

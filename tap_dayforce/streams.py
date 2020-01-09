@@ -50,8 +50,7 @@ class DayforceStream(object):
         bookmark = singer.bookmarks.get_bookmark(state, tap_stream_id, key=bookmark_properties)
         if bookmark is not None:
             return bookmark
-        else:
-            return config.get("start_date")
+        return config.get("start_date")
 
 
 @attr.s
@@ -159,7 +158,7 @@ class EmployeesStream(DayforceStream):
                 except requests.exceptions.HTTPError as e:
                     if e.response.status_code == 429:
                         sleep_time = int(e.response.headers["Retry-After"]) + 1
-                        LOGGER.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
+                        LOGGER.info("Rate limit reached. Retrying in %s seconds..", sleep_time)
                         time.sleep(sleep_time)
                         response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
                     else:
